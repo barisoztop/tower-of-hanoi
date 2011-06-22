@@ -16,7 +16,7 @@ import utils.UbitrackFacade;
  */
 public class TowerOfHanoi 
 {
-    public static final String TowerOfHanoiTitle = "Exercise 4";
+    public static final String TowerOfHanoiTitle = "Tower Of Hanoi";
     private UbitrackFacade ubitrackFacade;
     private PoseReceiver rodPoseReceiver1;
     private PoseReceiver rodPoseReceiver2;
