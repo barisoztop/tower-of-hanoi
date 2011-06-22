@@ -8,7 +8,8 @@ package towerofhanoi;
  *
  * @author gokhan
  */
-public class TowerOfHanoi {
+public class TowerOfHanoi 
+{
 
     /**
      * @param args the command line arguments
