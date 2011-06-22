@@ -42,7 +42,7 @@ public class Rob extends BranchGroup
         //translation
         Transform3D trans = new Transform3D();
         trans.rotX(Math.PI/2.0);
-        trans.setTranslation(new Vector3f(1.0f, 0.0f, height/2.0f));
+//        trans.setTranslation(new Vector3f(1.0f, 0.0f, height/2.0f));
         transGroup.setTransform(trans);
         
         
