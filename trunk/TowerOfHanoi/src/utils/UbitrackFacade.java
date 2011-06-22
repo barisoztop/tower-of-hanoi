@@ -8,7 +8,8 @@ import ubitrack.ubitrack;
 
 public class UbitrackFacade {
 	
-	static {
+	static 
+        {
 
 		System.loadLibrary("ubitrack_java");
 	}

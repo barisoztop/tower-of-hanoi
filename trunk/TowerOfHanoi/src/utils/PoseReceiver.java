@@ -9,53 +9,44 @@ import javax.vecmath.Vector3d;
 import ubitrack.SimplePose;
 import ubitrack.SimplePoseReceiver;
 
-public class PoseReceiver extends SimplePoseReceiver {
-
-	protected TransformGroup markerTransGroup = null;
-	
+public class PoseReceiver extends SimplePoseReceiver 
+{
+    protected TransformGroup markerTransGroup = null;
     protected Vector3d transVec;
     protected Quat4d rotQ;
 
-    public Quat4d getRotQ() {
+    public Quat4d getRotation() 
+    {
         return rotQ;
     }
 
-    public Vector3d getTransVec() {
+    public Vector3d getTransition() 
+    {
         return transVec;
     }
         
-        
-    public void setTransformGroup(TransformGroup markerTransGroup) {
+    public void setTransformGroup(TransformGroup markerTransGroup) 
+    {
 		this.markerTransGroup = markerTransGroup;
     }
 
-    public TransformGroup getMarkerTransGroup() {
+    public TransformGroup getMarkerTransGroup() 
+    {
         return markerTransGroup;
     }
     
-	
     @Override
-	public void receivePose(SimplePose pose) 
+    public void receivePose(SimplePose pose) 
+    {
+        if (markerTransGroup == null)
         {
-            
-                
-            if (markerTransGroup == null)
-            {
-                    return;
-            }
+                return;
+        }
+        transVec = new Vector3d(pose.getTx(), pose.getTy(), pose.getTz());
+        rotQ = new Quat4d(pose.getRx(), pose.getRy(), pose.getRz(), pose.getRw());
 
-
-            transVec = new Vector3d(pose.getTx(), pose.getTy(), pose.getTz());
-            rotQ = new Quat4d(pose.getRx(), pose.getRy(), pose.getRz(), pose.getRw());
-
-            Transform3D markerTransform = new Transform3D();
-            markerTransform.set(rotQ, transVec, 1);
-            
-
-
-            markerTransGroup.setTransform(markerTransform);
-//            markerTransGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
-                
-	}
-    
+        Transform3D markerTransform = new Transform3D();
+        markerTransform.set(rotQ, transVec, 1);
+        markerTransGroup.setTransform(markerTransform);
+    }
 }
