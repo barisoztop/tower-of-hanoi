@@ -52,7 +52,7 @@ public class Rob extends BranchGroup
         //Create shadow
         Transform3D trans = new Transform3D();
 //        tran.rotX(Math.PI/2);
-        tran.setTranslation(new Vector3d(0.0,0.0,height/2));
+//        tran.setTranslation(new Vector3d(0.0,0.0,height/2));
         TransformGroup shadowGroup = new TransformGroup(trans);
         FakeShadow shadow = new FakeShadow((GeometryArray) getGeometry(), new Color3f(0.0f,0.0f,0.0f));
         
@@ -60,7 +60,7 @@ public class Rob extends BranchGroup
         
         BranchGroup group = new BranchGroup();
         group.addChild(cylinderGroup);
-//        group.addChild(shadowGroup);
+        group.addChild(shadowGroup);
         
         
         
