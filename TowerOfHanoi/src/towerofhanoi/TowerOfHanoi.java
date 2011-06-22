@@ -28,7 +28,6 @@ public class TowerOfHanoi
     private AdvancedViewer viewer;
     
     private Rob rob1;
-    
     private Rob rob2;
     private Rob rob3;
     
@@ -36,9 +35,9 @@ public class TowerOfHanoi
     {
         
         BlueAppearance blueApp  = new BlueAppearance();
-        rob1 = new Rob(0.05f, 0.1f, blueApp); 
-        rob2 = new Rob(0.05f, 0.1f, blueApp); 
-        rob3 = new Rob(0.05f, 0.1f, blueApp);
+        rob1 = new Rob(0.005f, 0.1f, blueApp); 
+        rob2 = new Rob(0.005f, 0.1f, blueApp); 
+        rob3 = new Rob(0.005f, 0.1f, blueApp);
         
         
         //Ubitrack initilization
@@ -78,7 +77,9 @@ public class TowerOfHanoi
         viewer.addObject(backgroundObject);
         imageReceiver.setBackground(backgroundObject.getBackground());
         
-        
+        viewer.addObject(rob1);
+        viewer.addObject(rob2);
+        viewer.addObject(rob3);
         //buras› ﬂimdilik böyle sonra de€iﬂicek
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
