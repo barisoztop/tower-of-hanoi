@@ -5,6 +5,7 @@
 package towerofhanoi;
 
 import models.BlueAppearance;
+import models.GreyAppearance;
 import models.Rob;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
@@ -34,10 +35,10 @@ public class TowerOfHanoi
     public TowerOfHanoi() 
     {
         
-        BlueAppearance blueApp  = new BlueAppearance();
-        rob1 = new Rob(0.005f, 0.1f, blueApp); 
-        rob2 = new Rob(0.005f, 0.1f, blueApp); 
-        rob3 = new Rob(0.005f, 0.1f, blueApp);
+        GreyAppearance greyApp  = new GreyAppearance();
+        rob1 = new Rob(0.005f, 0.1f, greyApp); 
+        rob2 = new Rob(0.005f, 0.1f, greyApp); 
+        rob3 = new Rob(0.005f, 0.1f, greyApp);
         
         
         //Ubitrack initilization
