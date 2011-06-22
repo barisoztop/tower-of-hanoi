@@ -65,6 +65,21 @@ public class TowerOfHanoi
         rodPoseReceiver3.setTransformGroup(null);
         
     }
+
+    public PoseReceiver getRodPoseReceiver1() 
+    {
+        return rodPoseReceiver1;
+    }
+
+    public PoseReceiver getRodPoseReceiver2() 
+    {
+        return rodPoseReceiver2;
+    }
+
+    public PoseReceiver getRodPoseReceiver3() 
+    {
+        return rodPoseReceiver3;
+    }
     
     
     
