@@ -9,7 +9,9 @@ import java.util.Stack;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Geometry;
+import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.vecmath.Vector3f;
 
 /**
  *
@@ -36,6 +38,12 @@ public class Rob extends BranchGroup
         cylinder = new Cylinder(radius, height, app);
         this.radius=radius;
         this.radius=height;
+        
+        //translation
+        Transform3D trans = new Transform3D();
+        trans.rotX(Math.PI/2.0);
+//        trans.setTranslation(new Vector3f(0.0f, 0.0f, height/2.0f));
+        transGroup.setTransform(trans);
         
         
         transGroup.addChild(cylinder);
