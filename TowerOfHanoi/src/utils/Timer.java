@@ -21,10 +21,6 @@ public class Timer extends Thread
 
 	/** Time elapsed */
 	private int m_elapsed;
-
-        
-        
-        
 	/**
 	  * Creates a timer of a specified length
 	  * @param	length	Length of time before timeout occurs
