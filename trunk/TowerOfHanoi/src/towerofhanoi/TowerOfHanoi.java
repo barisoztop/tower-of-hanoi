@@ -4,6 +4,8 @@
  */
 package towerofhanoi;
 
+import models.BlueAppearance;
+import models.Rob;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
 import utils.ImageReceiver;
@@ -25,9 +27,19 @@ public class TowerOfHanoi
     private ImageReceiver imageReceiver;
     private AdvancedViewer viewer;
     
+    private Rob rob1;
+    
+    private Rob rob2;
+    private Rob rob3;
     
     public TowerOfHanoi() 
     {
+        
+        BlueAppearance blueApp  = new BlueAppearance();
+        rob1 = new Rob(0.05f, 0.1f, blueApp); 
+        rob2 = new Rob(0.05f, 0.1f, blueApp); 
+        rob3 = new Rob(0.05f, 0.1f, blueApp);
+        
         
         //Ubitrack initilization
         ubitrackFacade = new UbitrackFacade();
@@ -68,9 +80,9 @@ public class TowerOfHanoi
         
         
         //buras› ﬂimdilik böyle sonra de€iﬂicek
-        rodPoseReceiver1.setTransformGroup(null);
-        rodPoseReceiver2.setTransformGroup(null);
-        rodPoseReceiver3.setTransformGroup(null);
+        rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
+        rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
+        rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
         cursorPoseReceiver.setTransformGroup(null);
         
     }
