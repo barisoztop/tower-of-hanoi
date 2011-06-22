@@ -49,6 +49,12 @@ public class TowerOfHanoi
         {
                 return;
         }
+        cursorPoseReceiver = new PoseReceiver();
+        if (!ubitrackFacade.setPoseCallback("posesink4", cursorPoseReceiver)) 
+        {
+                return;
+        }
+        
         imageReceiver = new ImageReceiver();
         if (!ubitrackFacade.setImageCallback("imgsink", imageReceiver)) 
         {
@@ -60,9 +66,12 @@ public class TowerOfHanoi
         viewer.addObject(backgroundObject);
         imageReceiver.setBackground(backgroundObject.getBackground());
         
+        
+        //buras› ﬂimdilik böyle sonra de€iﬂicek
         rodPoseReceiver1.setTransformGroup(null);
         rodPoseReceiver2.setTransformGroup(null);
         rodPoseReceiver3.setTransformGroup(null);
+        cursorPoseReceiver.setTransformGroup(null);
         
     }
 
