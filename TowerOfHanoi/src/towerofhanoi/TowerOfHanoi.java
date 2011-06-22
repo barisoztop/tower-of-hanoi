@@ -89,6 +89,12 @@ public class TowerOfHanoi
     {
         return rodPoseReceiver3;
     }
+
+    public PoseReceiver getCursorPoseReceiver() 
+    {
+        return cursorPoseReceiver;
+    }
+    
     
     
     
