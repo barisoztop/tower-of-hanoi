@@ -15,9 +15,11 @@ import javax.media.j3d.QuadArray;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.media.j3d.TriangleFanArray;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
+import org.jdesktop.j3d.loaders.vrml97.impl.Sphere;
 
 /**
  *
@@ -56,13 +58,8 @@ public class Rob extends BranchGroup
         
         rectangleGroup.addChild(new Shape3D(rect));
         
-        
-        
-        
-        
         // Create Cylinder
-        
-        cylinder = new Cylinder(radius, height, app);
+        cylinder = new Cylinder(radius,height,app);
         this.radius=radius;
         this.radius=height;
         Transform3D transCylinder = new Transform3D();
@@ -71,18 +68,14 @@ public class Rob extends BranchGroup
         TransformGroup cylinderGroup = new TransformGroup(transCylinder);
         cylinderGroup.addChild(cylinder);
         
-        //Create shadow
-        Transform3D transShadow = new Transform3D();
-//        transShadow.rotX(Math.PI/2);
-        transShadow.setTranslation(new Vector3d(0.0f,0.0f,0.0005f));
-        
-        FakeShadow shadow = new FakeShadow((GeometryArray) getGeometry(), new Color3f(0.0f,0.0f,0.0f));
-        shadow.getTransformGroup().setTransform(transShadow);
-        
         
         BranchGroup group = new BranchGroup();
+        group.setCapability(ALLOW_CHILDREN_WRITE);
+        group.setCapability(ALLOW_DETACH);
+        group.setCapability(ALLOW_CHILDREN_EXTEND);
+        group.setCapability(ALLOW_CHILDREN_READ);
+        
         group.addChild(cylinderGroup);
-        group.addChild(shadow);
         group.addChild(rectangleGroup);
         
         
