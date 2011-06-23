@@ -81,10 +81,12 @@ public class TowerOfHanoi
         viewer.addObject(rob1);
         viewer.addObject(rob2);
         viewer.addObject(rob3);
-        //buras› ﬂimdilik böyle sonra de€iﬂicek
+        
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
+        
+        //buras› ﬂimdilik böyle sonra de€iﬂicek
         cursorPoseReceiver.setTransformGroup(null);
         
     }
