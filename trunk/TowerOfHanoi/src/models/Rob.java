@@ -11,9 +11,12 @@ import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Geometry;
 import javax.media.j3d.GeometryArray;
+import javax.media.j3d.QuadArray;
+import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
+import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
 
 /**
@@ -38,30 +41,49 @@ public class Rob extends BranchGroup
         transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
         transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
         
+        //Create Rectangle for fancy look
+        TransformGroup rectangleGroup = new TransformGroup();
+        QuadArray rect = new QuadArray (4, QuadArray.COORDINATES|QuadArray.COLOR_3);
+
+        rect.setCoordinate (0, new Point3f (-0.05f, -0.04f, -0.0005f));
+    	rect.setCoordinate (1, new Point3f (0.05f, -0.04f,-0.0005f));
+    	rect.setCoordinate (2, new Point3f (0.05f, 0.04f,-0.0005f));
+    	rect.setCoordinate (3, new Point3f (-0.05f, 0.04f, -0.0005f));
+        rect.setColor(0,new Color3f(0.3f, 0.3f, 0.8f));
+        rect.setColor(1,new Color3f(0.3f, 0.3f, 0.8f));
+        rect.setColor(2,new Color3f(0.3f, 0.3f, 0.8f));
+        rect.setColor(3,new Color3f(0.3f, 0.3f, 0.8f));
+        
+        rectangleGroup.addChild(new Shape3D(rect));
+        
+        
+        
+        
+        
         // Create Cylinder
         
         cylinder = new Cylinder(radius, height, app);
         this.radius=radius;
         this.radius=height;
-        Transform3D tran = new Transform3D();
-        tran.rotX(Math.PI/2);
-        tran.setTranslation(new Vector3d(0.0,0.0,height/2));
-        TransformGroup cylinderGroup = new TransformGroup(tran);
+        Transform3D transCylinder = new Transform3D();
+        transCylinder.rotX(Math.PI/2);
+        transCylinder.setTranslation(new Vector3d(0.0,0.0,(height/2.0)));
+        TransformGroup cylinderGroup = new TransformGroup(transCylinder);
         cylinderGroup.addChild(cylinder);
         
         //Create shadow
-        Transform3D trans = new Transform3D();
-//        tran.rotX(Math.PI/2);
-//        tran.setTranslation(new Vector3d(0.0,0.0,height/2));
-        TransformGroup shadowGroup = new TransformGroup(trans);
-        FakeShadow shadow = new FakeShadow((GeometryArray) getGeometry(), new Color3f(0.0f,0.0f,0.0f));
+        Transform3D transShadow = new Transform3D();
+//        transShadow.rotX(Math.PI/2);
+        transShadow.setTranslation(new Vector3d(0.0f,0.0f,0.0005f));
         
-        shadowGroup.addChild(shadow);
+        FakeShadow shadow = new FakeShadow((GeometryArray) getGeometry(), new Color3f(0.0f,0.0f,0.0f));
+        shadow.getTransformGroup().setTransform(transShadow);
+        
         
         BranchGroup group = new BranchGroup();
         group.addChild(cylinderGroup);
-        group.addChild(shadowGroup);
-        
+        group.addChild(shadow);
+        group.addChild(rectangleGroup);
         
         
         transGroup.addChild(group);
