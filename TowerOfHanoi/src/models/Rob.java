@@ -15,11 +15,9 @@ import javax.media.j3d.QuadArray;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
-import javax.media.j3d.TriangleFanArray;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
-import org.jdesktop.j3d.loaders.vrml97.impl.Sphere;
 
 /**
  *
@@ -68,7 +66,6 @@ public class Rob extends BranchGroup
         TransformGroup cylinderGroup = new TransformGroup(transCylinder);
         cylinderGroup.addChild(cylinder);
         
-        
         BranchGroup group = new BranchGroup();
         group.setCapability(ALLOW_CHILDREN_WRITE);
         group.setCapability(ALLOW_DETACH);
@@ -101,6 +98,16 @@ public class Rob extends BranchGroup
     public Geometry getGeometry() 
     {
         return cylinder.getShape(0).getGeometry();
+    }
+
+    public float getRadius() 
+    {
+        return radius;
+    }
+
+    public float getHeight() 
+    {
+        return height;
     }
     
     
