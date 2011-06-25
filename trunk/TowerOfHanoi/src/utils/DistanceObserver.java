@@ -69,19 +69,25 @@ public class DistanceObserver extends Thread
                         if(HASDISK == false)
                         {
                             //pop the disc 
-                            Disc disc = rob1.pop();
+//                            Disc disc = rob1.pop();
                             
                             //Calculate relative position
-                            Transform3D relative = new Transform3D();
-                            relative.mulInverse(rob1Trans,cursorTrans);
+//                            Transform3D relative = new Transform3D();
+//                            relative.mulInverse(rob1Trans,cursorTrans);
                             
-                            cursor.getTransformGroup().addChild(disc);
+                            
                             
                             
                             cursor.selectArrow(true);
                             HASDISK=true;
                             Thread.sleep(1000);
                             
+                        }
+                        else
+                        {
+                            cursor.selectArrow(false);
+                            HASDISK=false;
+                            Thread.sleep(1000);
                         }
                         
                         
