@@ -1,6 +1,5 @@
 package models;
 
-import java.awt.Color;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Material;
@@ -10,9 +9,9 @@ public class GreenAppereance extends Appearance{
 
 	public GreenAppereance() {
 
-		Color3f black = new Color3f(0.f,0.f,0.f);
-		Color3f white = new Color3f(1.0f,1.0f,1.0f);
-		Color3f green = new Color3f(Color.green);
+		Color3f black = new Color3f(0.0f,0.0f,0.0f);
+		Color3f white = new Color3f(0.5f,0.5f,0.5f);
+		Color3f green = new Color3f(0.3f,0.8f,0.3f);
 	
 		// Ambient,emissive,diffuse,specular,shininess
 		/*Material blueMat = new Material

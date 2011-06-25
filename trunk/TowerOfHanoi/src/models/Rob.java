@@ -5,12 +5,10 @@
 package models;
 
 import com.sun.j3d.utils.geometry.Cylinder;
-import java.awt.Color;
 import java.util.Stack;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Geometry;
-import javax.media.j3d.GeometryArray;
 import javax.media.j3d.QuadArray;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
@@ -89,6 +87,29 @@ public class Rob extends BranchGroup
     {
         return stack;
     }
+    
+    public int size()
+    {
+        return stack.size();
+    }
+    
+    
+    public void push (Disc disc)
+    {
+        stack.push(disc);
+        disc.updatePosition(stack.size());
+        addChild(disc);
+    }
+    
+    
+    public Disc pop()
+    {
+        Disc tmp = stack.pop();
+        removeChild(tmp);
+        tmp.updatePosition(0);
+        return tmp;
+    }
+    
     
     public TransformGroup getTransformGroup() 
     {
