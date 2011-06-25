@@ -98,16 +98,23 @@ public class Rob extends BranchGroup
     {
         stack.push(disc);
         disc.updatePosition(stack.size());
-        addChild(disc);
+        transGroup.addChild(disc);
     }
     
     
     public Disc pop()
     {
-        Disc tmp = stack.pop();
-        removeChild(tmp);
-        tmp.updatePosition(0);
-        return tmp;
+        if(stack.empty())
+        {
+            Disc tmp = stack.pop();
+            transGroup.removeChild(tmp);
+            tmp.updatePosition(0);
+            return tmp;
+        }
+        else
+        {
+            return null;
+        }
     }
     
     
