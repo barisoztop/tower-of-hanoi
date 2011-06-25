@@ -36,9 +36,9 @@ public class TowerOfHanoi
     private RedArrow redArrow;
     private SwitchArrow switchArrow;
     private BlueArrow blueArrow;
-    private Disc SMALL_DISC;
-    private Disc MEDIUM_DISC;
-    private Disc LARGE_DISC;
+    private static Disc SMALL_DISC;
+    private static Disc MEDIUM_DISC;
+    private static Disc LARGE_DISC;
     public static final float DISK_HEIGHT =0.005f; 
     
     public static final float LARGE_DISK_RADIUS =0.03f;
@@ -110,7 +110,8 @@ public class TowerOfHanoi
          rob1.push(LARGE_DISC);
          rob1.push(MEDIUM_DISC);
          rob1.push(SMALL_DISC);
-         //         rob1.pop();
+         rob1.pop();
+         rob1.push(SMALL_DISC);
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());

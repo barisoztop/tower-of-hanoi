@@ -104,11 +104,24 @@ public class Rob extends BranchGroup
     
     public Disc pop()
     {
-        if(stack.empty())
+        if(!stack.empty())
         {
             Disc tmp = stack.pop();
             transGroup.removeChild(tmp);
             tmp.updatePosition(0);
+            return tmp;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    public Disc peek()
+    {
+        if(!stack.empty())
+        {
+            Disc tmp = stack.peek();
             return tmp;
         }
         else
