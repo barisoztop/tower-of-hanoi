@@ -100,13 +100,15 @@ public class TowerOfHanoi
         BackgroundObject backgroundObject = new BackgroundObject();        
         viewer.addObject(backgroundObject);
         imageReceiver.setBackground(backgroundObject.getBackground());
-        
+       
         viewer.addObject(rob1);
         viewer.addObject(rob2);
         viewer.addObject(rob3);
         viewer.addObject(switchArrow);
-       
+//        viewer.addObject(LARGE_DISC);
         
+         rob1.push(LARGE_DISC);
+         rob1.pop();
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());

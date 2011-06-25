@@ -45,6 +45,12 @@ public class Disc extends BranchGroup
         trans.rotX(Math.PI/2.0);
         trans.setTranslation(new Vector3f(0.0f,0.0f,(height/2.0f)+(height*order)));
         group = new TransformGroup(trans);
+        
+        group.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
+        group.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+        group.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+        group.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
+        
         cylinder = new Cylinder(radius,height,app);
         group.addChild(cylinder);
         
