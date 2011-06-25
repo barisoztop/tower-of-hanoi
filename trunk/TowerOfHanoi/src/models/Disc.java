@@ -82,6 +82,10 @@ public class Disc extends BranchGroup
     public TransformGroup getTransformGroup() {
         return GlobaltransGroup;
     }
+    public TransformGroup getTransGroup()
+    {
+        return group;
+    }
     
     
     

@@ -15,6 +15,7 @@ import models.Rob;
 import models.SwitchArrow;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
+import utils.DistanceObserver;
 import utils.ImageReceiver;
 import utils.PoseReceiver;
 import utils.UbitrackFacade;
@@ -40,7 +41,7 @@ public class TowerOfHanoi
     private static Disc MEDIUM_DISC;
     private static Disc LARGE_DISC;
     public static final float DISK_HEIGHT =0.005f; 
-    
+    private DistanceObserver observer;
     public static final float LARGE_DISK_RADIUS =0.03f;
     public static final float MEDIUM_DISC_RADIUS =0.02f;
     public static final float SMALL_DISK_RADIUS =0.01f;
@@ -75,7 +76,7 @@ public class TowerOfHanoi
                 return;
         }
         rodPoseReceiver2 = new PoseReceiver();
-        if (!ubitrackFacade.setPoseCallback("posesink2", rodPoseReceiver2)) 
+        if (!ubitrackFacade.setPoseCallback("posesink4", rodPoseReceiver2)) 
         {
                 return;
         }
@@ -85,7 +86,7 @@ public class TowerOfHanoi
                 return;
         }
         cursorPoseReceiver = new PoseReceiver();
-        if (!ubitrackFacade.setPoseCallback("posesink4", cursorPoseReceiver)) 
+        if (!ubitrackFacade.setPoseCallback("posesink2", cursorPoseReceiver)) 
         {
                 return;
         }
@@ -102,22 +103,26 @@ public class TowerOfHanoi
         imageReceiver.setBackground(backgroundObject.getBackground());
        
         viewer.addObject(rob1);
-        viewer.addObject(rob2);
-        viewer.addObject(rob3);
+//        viewer.addObject(rob2);
+//        viewer.addObject(rob3);
         viewer.addObject(switchArrow);
         switchArrow.selectArrow(false);
+        
+        
+        
         
          rob1.push(LARGE_DISC);
          rob1.push(MEDIUM_DISC);
          rob1.push(SMALL_DISC);
-         rob1.pop();
-         rob1.push(SMALL_DISC);
+         
+         
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
         
         cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
-        
+        observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
+        observer.start();
     }
 
     public PoseReceiver getRodPoseReceiver1() 
