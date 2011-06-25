@@ -105,10 +105,12 @@ public class TowerOfHanoi
         viewer.addObject(rob2);
         viewer.addObject(rob3);
         viewer.addObject(switchArrow);
-//        viewer.addObject(LARGE_DISC);
+        switchArrow.selectArrow(false);
         
          rob1.push(LARGE_DISC);
-         rob1.pop();
+         rob1.push(MEDIUM_DISC);
+         rob1.push(SMALL_DISC);
+         //         rob1.pop();
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
