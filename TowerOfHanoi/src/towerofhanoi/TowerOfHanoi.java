@@ -4,8 +4,12 @@
  */
 package towerofhanoi;
 
+import models.BlueAppearance;
 import models.BlueArrow;
+import models.Disc;
+import models.GreenAppereance;
 import models.GreyAppearance;
+import models.RedAppearance;
 import models.RedArrow;
 import models.Rob;
 import models.SwitchArrow;
@@ -32,14 +36,24 @@ public class TowerOfHanoi
     private RedArrow redArrow;
     private SwitchArrow switchArrow;
     private BlueArrow blueArrow;
+    private Disc SMALL_DISC;
+    private Disc MEDIUM_DISC;
+    private Disc LARGE_DISC;
+    public static final float DISK_HEIGHT =0.005f; 
     
-    
+    public static final float LARGE_DISK_RADIUS =0.03f;
+    public static final float MEDIUM_DISC_RADIUS =0.02f;
+    public static final float SMALL_DISK_RADIUS =0.01f;
     private Rob rob1;
     private Rob rob2;
     private Rob rob3;
     
     public TowerOfHanoi() 
     {
+        LARGE_DISC =new Disc(LARGE_DISK_RADIUS,DISK_HEIGHT,0, new GreenAppereance());
+        MEDIUM_DISC = new Disc(MEDIUM_DISC_RADIUS, DISK_HEIGHT, 1, new RedAppearance());
+        SMALL_DISC = new Disc(SMALL_DISK_RADIUS, DISK_HEIGHT, 2, new BlueAppearance());
+        
         redArrow =new RedArrow();
         blueArrow = new BlueArrow();
         switchArrow = new SwitchArrow(blueArrow, redArrow);
@@ -90,6 +104,8 @@ public class TowerOfHanoi
         viewer.addObject(rob1);
         viewer.addObject(rob2);
         viewer.addObject(rob3);
+        viewer.addObject(switchArrow);
+       
         
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
