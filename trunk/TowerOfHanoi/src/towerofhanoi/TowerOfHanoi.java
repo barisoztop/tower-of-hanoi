@@ -4,9 +4,11 @@
  */
 package towerofhanoi;
 
-import models.BlueAppearance;
+import models.BlueArrow;
 import models.GreyAppearance;
+import models.RedArrow;
 import models.Rob;
+import models.SwitchArrow;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
 import utils.ImageReceiver;
@@ -27,6 +29,10 @@ public class TowerOfHanoi
     private PoseReceiver cursorPoseReceiver;
     private ImageReceiver imageReceiver;
     private AdvancedViewer viewer;
+    private RedArrow redArrow;
+    private SwitchArrow switchArrow;
+    private BlueArrow blueArrow;
+    
     
     private Rob rob1;
     private Rob rob2;
@@ -34,6 +40,9 @@ public class TowerOfHanoi
     
     public TowerOfHanoi() 
     {
+        redArrow =new RedArrow();
+        blueArrow = new BlueArrow();
+        switchArrow = new SwitchArrow(blueArrow, redArrow);
         
         GreyAppearance greyApp  = new GreyAppearance();
         rob1 = new Rob(0.005f, 0.1f, greyApp); 
@@ -86,8 +95,7 @@ public class TowerOfHanoi
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
         
-        //buras› ﬂimdilik böyle sonra de€iﬂicek
-        cursorPoseReceiver.setTransformGroup(null);
+        cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
         
     }
 
