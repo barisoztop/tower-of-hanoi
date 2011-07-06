@@ -71,24 +71,24 @@ public class Disc extends BranchGroup
         group.setTransform(trans);
     }
 
-    public float getRadius() {
+    public float getRadius() 
+    {
         return radius;
     }
 
-    public float getHeight() {
+    public float getHeight() 
+    {
         return height;
     }
 
-    public TransformGroup getTransformGroup() {
+    public TransformGroup getTransformGroup() 
+    {
         return GlobaltransGroup;
     }
+    
     public TransformGroup getTransGroup()
     {
         return group;
     }
-    
-    
-    
-    
     
 }

@@ -5,7 +5,6 @@ import javax.media.j3d.GeometryArray;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.TransformGroup;
 import javax.media.j3d.TriangleFanArray;
-import javax.media.j3d.TriangleStripArray;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3f;
 

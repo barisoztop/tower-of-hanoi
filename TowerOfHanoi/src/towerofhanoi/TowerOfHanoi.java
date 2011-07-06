@@ -103,12 +103,10 @@ public class TowerOfHanoi
         imageReceiver.setBackground(backgroundObject.getBackground());
        
         viewer.addObject(rob1);
-//        viewer.addObject(rob2);
-//        viewer.addObject(rob3);
+        viewer.addObject(rob2);
+        viewer.addObject(rob3);
         viewer.addObject(switchArrow);
         switchArrow.selectArrow(false);
-        
-        
         
         
          rob1.push(LARGE_DISC);
@@ -121,8 +119,8 @@ public class TowerOfHanoi
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
         
         cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
-        observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
-        observer.start();
+//        observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
+//        observer.start();
     }
 
     public PoseReceiver getRodPoseReceiver1() 
