@@ -55,19 +55,23 @@ public class TowerOfHanoi
         MEDIUM_DISC = new Disc(MEDIUM_DISC_RADIUS, DISK_HEIGHT, 1, new RedAppearance());
         SMALL_DISC = new Disc(SMALL_DISK_RADIUS, DISK_HEIGHT, 2, new BlueAppearance());
         
-        redArrow =new RedArrow();
-        blueArrow = new BlueArrow();
-        switchArrow = new SwitchArrow(blueArrow, redArrow);
+        
+        
         
         GreyAppearance greyApp  = new GreyAppearance();
         rob1 = new Rob(0.005f, 0.1f, greyApp); 
         rob2 = new Rob(0.005f, 0.1f, greyApp); 
         rob3 = new Rob(0.005f, 0.1f, greyApp);
-//        
+        
+        redArrow =new RedArrow();
+        blueArrow = new BlueArrow();
+        
+        switchArrow = new SwitchArrow(blueArrow, redArrow);
         
         //Ubitrack initilization
         ubitrackFacade = new UbitrackFacade();
         viewer = new AdvancedViewer(TowerOfHanoiTitle, ubitrackFacade);
+        
         ubitrackFacade.initUbitrack();
 
         rodPoseReceiver1 = new PoseReceiver();
@@ -109,8 +113,8 @@ public class TowerOfHanoi
         switchArrow.selectArrow(false);
         
         
-         rob1.push(LARGE_DISC);
-         rob1.push(MEDIUM_DISC);
+//         rob1.push(LARGE_DISC);
+//         rob1.push(MEDIUM_DISC);
          rob1.push(SMALL_DISC);
          
          
@@ -118,9 +122,12 @@ public class TowerOfHanoi
         rodPoseReceiver2.setTransformGroup(rob2.getTransformGroup());
         rodPoseReceiver3.setTransformGroup(rob3.getTransformGroup());
         
+        
         cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
-//        observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
-//        observer.start();
+        observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
+        
+        
+        observer.start();
     }
 
     public PoseReceiver getRodPoseReceiver1() 

@@ -26,8 +26,6 @@ public class RedArrow extends BranchGroup
 
         transGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
         transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
-        transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
-        transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
         setCapability(ALLOW_DETACH);
         setCapability(ALLOW_CHILDREN_READ);
         setCapability(ALLOW_CHILDREN_WRITE);

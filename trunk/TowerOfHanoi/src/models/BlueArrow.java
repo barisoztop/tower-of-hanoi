@@ -26,8 +26,7 @@ public class BlueArrow extends BranchGroup
         
         transGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
         transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
-        transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
-        transGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+        
         BlueAppearance app = new BlueAppearance();
         _cone = new Cone(0.01f, 0.02f,app);
         _cylinder = new Cylinder(0.003f, 0.03f,app);

@@ -21,10 +21,14 @@ public class Disc extends BranchGroup
     private float radius;
     private float height;
     
-    private final TransformGroup GlobaltransGroup;
+    private  TransformGroup GlobaltransGroup;
     private final Cylinder cylinder;
     private Transform3D trans;
     private TransformGroup group;
+
+    public void setTransformGroup(TransformGroup group) {
+        this.GlobaltransGroup = group;
+    }
     
     public Disc(float radius, float height,int order ,Appearance app)
     {
@@ -44,6 +48,8 @@ public class Disc extends BranchGroup
         trans = new Transform3D();
         trans.rotX(Math.PI/2.0);
         trans.setTranslation(new Vector3f(0.0f,0.0f,(height/2.0f)+(height*order)));
+        
+        BranchGroup bg = new BranchGroup();
         group = new TransformGroup(trans);
         
         group.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
@@ -53,14 +59,16 @@ public class Disc extends BranchGroup
         
         cylinder = new Cylinder(radius,height,app);
         group.addChild(cylinder);
+        bg.addChild(group);
         
-        
-        GlobaltransGroup.addChild(group);
+        GlobaltransGroup.addChild(bg);
         
         
         
         
         setCapability(ALLOW_DETACH);
+        setCapability(ALLOW_CHILDREN_EXTEND);
+        setCapability(ALLOW_CHILDREN_WRITE);
         addChild(GlobaltransGroup);
     }
     
