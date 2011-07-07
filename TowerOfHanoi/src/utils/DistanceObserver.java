@@ -28,7 +28,7 @@ public class DistanceObserver extends Thread
     private Rob rob2;
     private Rob rob3;
     private SwitchArrow cursor;
-    private static final double THRESHOLD = 0.05;
+    private static final double THRESHOLD = 0.04d;
     private boolean HASDISK = false;
   
     
@@ -100,6 +100,81 @@ public class DistanceObserver extends Thread
                             relativeTrans.invert(cursorTrans);
                             relativeTrans.mul(relativeTrans,rob1Trans);
                             tempTransgroup.setTransform(relativeTrans);
+                            tempTransgroup.addChild(tempDisc);
+                            tempBranchgroup.addChild(tempTransgroup);
+                            cursor.selectArrow(true);
+                            cursor.getTransformGroup().addChild(tempBranchgroup);
+                            HASDISK=true;
+                            Thread.sleep(2000);                            
+                        }   
+                        else
+                        {
+                            if(rob1.size() == 0 || rob1.peek().getRadius() > tempDisc.getRadius())
+                            {
+                                HASDISK=false;
+                                //REMOVE disk from temporary branch group
+                                cursor.getTransformGroup().removeChild(tempBranchgroup);
+                                tempBranchgroup.removeAllChildren();
+                                tempTransgroup.removeAllChildren();
+
+                                cursor.selectArrow(false);
+                                rob1.push(tempDisc);
+                                Thread.sleep(2000);
+                            }
+                            
+                            
+                        } 
+                    }
+                    else if((vecDirSecond.length() < THRESHOLD)&& vecDirSecond.length() != 0)
+                    {
+                    	if(HASDISK == false)
+                        {
+                            tempDisc  = rob2.pop();
+                            if(tempDisc == null)
+                                continue;
+                            
+                            relativeTrans.invert(cursorTrans);
+                            relativeTrans.mul(relativeTrans,rob2Trans);
+                            tempTransgroup.setTransform(relativeTrans);
+                            tempTransgroup.addChild(tempDisc);
+                            tempBranchgroup.addChild(tempTransgroup);
+                            
+                            
+                            cursor.selectArrow(true);
+                            cursor.getTransformGroup().addChild(tempBranchgroup);
+                            HASDISK=true;   
+                            Thread.sleep(2000);
+                            
+                        }
+                        else
+                        {
+                            
+                            if(rob2.size() == 0 || rob2.peek().getRadius() > tempDisc.getRadius())
+                            {
+                                HASDISK=false;
+
+                                //REMOVE disk from temporary branch group
+                                cursor.getTransformGroup().removeChild(tempBranchgroup);
+                                tempBranchgroup.removeAllChildren();
+                                tempTransgroup.removeAllChildren();
+
+                                cursor.selectArrow(false);
+                                rob2.push(tempDisc);
+                                Thread.sleep(2000);
+                            }
+                        }
+                    }
+                    else if((vecDirThird.length() < THRESHOLD)&& vecDirThird.length() != 0)
+                    {
+                    	if(HASDISK == false)
+                        {
+                            tempDisc  = rob3.pop();
+                            if(tempDisc == null)
+                                continue;
+                            
+                            relativeTrans.invert(cursorTrans);
+                            relativeTrans.mul(relativeTrans,rob3Trans);
+                            tempTransgroup.setTransform(relativeTrans);
                             
                             tempTransgroup.addChild(tempDisc);
                                                        
@@ -107,68 +182,25 @@ public class DistanceObserver extends Thread
                             
                             cursor.selectArrow(true);
                             cursor.getTransformGroup().addChild(tempBranchgroup);
-                            HASDISK=true;
-//                           
-                            Thread.sleep(2000);                            
-                        }   
-//                        else
-//                        {
-//                            HASDISK=false;
-//                            
-//                            //REMOVE disk from temporary branch group
-//                            cursor.getTransformGroup().removeChild(tempBranchgroup);
-//                            tempBranchgroup.removeChild(tempTransgroup);
-//                            tempTransgroup.removeChild(tempDisc);
-//                            
-//                            
-//                            cursor.selectArrow(false);
-//                            rob1.push(tempDisc);
-//                            Thread.sleep(2000);
-//                        } 
+                            HASDISK=true;    
+                            Thread.sleep(2000);
+                        }
+                        else
+                        {
+                            if(rob3.size() == 0 || rob3.peek().getRadius() > tempDisc.getRadius())
+                            {
+                                HASDISK=false;
+                                //REMOVE disk from temporary branch group
+                                cursor.getTransformGroup().removeChild(tempBranchgroup);
+                                tempBranchgroup.removeAllChildren();
+                                tempTransgroup.removeAllChildren();
+
+                                cursor.selectArrow(false);
+                                rob3.push(tempDisc);
+                                Thread.sleep(2000);
+                            }
+                        }
                     }
-//                    else if((vecDirSecond.length() < THRESHOLD)&& vecDirSecond.length() != 0)
-//                    {
-//                    	if(HASDISK == false)
-//                        {
-//                            cursor.selectArrow(true);
-//                            HASDISK=true;
-//                            tempDisc  = rob2.pop();
-//                            if(tempDisc == null)
-//                                continue;
-//                            cursor.getTransformGroup().addChild(tempDisc);
-//                            Thread.sleep(1000);
-//                           
-//                        }
-//                        else
-//                        {
-//                            cursor.selectArrow(false);
-//                            cursor.getTransformGroup().removeChild(tempDisc);
-//                            rob2.push(tempDisc);
-//                            HASDISK=false;
-//                            Thread.sleep(1000);
-//                        }
-//                    }
-//                    else if((vecDirThird.length() < THRESHOLD)&& vecDirThird.length() != 0)
-//                    {
-//                    	if(HASDISK == false)
-//                        {
-//                            cursor.selectArrow(true);
-//                            HASDISK=true;
-//                            tempDisc  = rob3.pop();
-//                            if(tempDisc == null)
-//                                continue;
-//                            cursor.getTransformGroup().addChild(tempDisc);
-//                            Thread.sleep(1000);
-//                        }
-//                        else
-//                        {
-//                            cursor.selectArrow(false);
-//                            cursor.getTransformGroup().removeChild(tempDisc);
-//                            rob3.push(tempDisc);
-//                            HASDISK=false;
-//                            Thread.sleep(1000);
-//                        }
-//                    }
                        
                 }
             }
