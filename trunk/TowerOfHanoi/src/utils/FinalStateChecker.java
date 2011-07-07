@@ -29,7 +29,6 @@ public class FinalStateChecker extends Thread
                 try
                 {
                     //add animation
-                
                     Thread.sleep(5000);
                     //reset the game and start
                 }
@@ -37,6 +36,7 @@ public class FinalStateChecker extends Thread
                 {
                     System.out.println(e);
                 }
+                
             }
         }
     }
