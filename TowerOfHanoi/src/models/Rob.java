@@ -108,7 +108,7 @@ public class Rob extends BranchGroup
         {
             Disc tmp = stack.pop();
             transGroup.removeChild(tmp);
-            tmp.updatePosition(0);
+//            tmp.updatePosition(0);
             return tmp;
         }
         else

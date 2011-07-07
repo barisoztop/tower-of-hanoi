@@ -1,0 +1,278 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x06230360, pid=5148, tid=4692
+#
+# JRE version: 6.0_25-b06
+# Java VM: Java HotSpot(TM) Client VM (20.0-b11 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# C  [ubitrack.dll+0x20360]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00e49800):  JavaThread "main" [_thread_in_native, id=4692, stack(0x00200000,0x00250000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x0000001c
+
+Registers:
+EAX=0x0024f994, EBX=0x0024fb78, ECX=0x00000004, EDX=0x0024fa90
+ESP=0x0024f950, EBP=0x0024fb78, ESI=0x00000004, EDI=0x00e49928
+EIP=0x06230360, EFLAGS=0x00010202
+
+Top of Stack: (sp=0x0024f950)
+0x0024f950:   06233462 0024fb78 00000004 0024fbac
+0x0024f960:   0024fb78 ffffffff ffffffff 00000024
+0x0024f970:   6dab6d18 062c213c 0024f994 0024fb78
+0x0024f980:   380f6c26 00e49928 0024fa90 0024fbac
+0x0024f990:   00000000 00000000 00000004 ffffffff
+0x0024f9a0:   ffffffff 152d32c9 0024fa68 00000000
+0x0024f9b0:   00000001 00000a96 0024fb50 00000001
+0x0024f9c0:   0024fa4c 6d9e5cae 0024fa38 025782d0 
+
+Instructions: (pc=0x06230360)
+0x06230340:   24 0c 64 89 0d 00 00 00 00 59 5e 83 c4 10 c2 04
+0x06230350:   00 cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+0x06230360:   8b 41 18 56 8b 70 04 80 7e 31 00 57 8b f8 75 31
+0x06230370:   53 8b 5c 24 10 55 8b 2d 3c 41 50 06 8d 64 24 00 
+
+
+Register to memory mapping:
+
+EAX=0x0024f994 is pointing into the stack for thread: 0x00e49800
+EBX=0x0024fb78 is pointing into the stack for thread: 0x00e49800
+ECX=0x00000004 is an unknown value
+EDX=0x0024fa90 is pointing into the stack for thread: 0x00e49800
+ESP=0x0024f950 is pointing into the stack for thread: 0x00e49800
+EBP=0x0024fb78 is pointing into the stack for thread: 0x00e49800
+ESI=0x00000004 is an unknown value
+EDI=0x00e49928 is an unknown value
+
+
+Stack: [0x00200000,0x00250000],  sp=0x0024f950,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [ubitrack.dll+0x20360]  Ubitrack::Graph::dataflowToGraphviz+0x880
+C  0x65736f70
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  ubitrack.ubitrackJNI.SimpleFacade_setPoseCallback(JLubitrack/SimpleFacade;Ljava/lang/String;JLubitrack/SimplePoseReceiver;)Z+0
+j  ubitrack.SimpleFacade.setPoseCallback(Ljava/lang/String;Lubitrack/SimplePoseReceiver;)Z+11
+j  utils.UbitrackFacade.setPoseCallback(Ljava/lang/String;Lubitrack/SimplePoseReceiver;)Z+6
+j  towerofhanoi.TowerOfHanoi.<init>()V+223
+j  towerofhanoi.Main.main([Ljava/lang/String;)V+4
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x04c87800 JavaThread "J3D-InputDeviceScheduler-1" [_thread_blocked, id=5208, stack(0x0c4d0000,0x0c520000)]
+  0x04c87400 JavaThread "J3D-SoundSchedulerUpdateThread-1" [_thread_blocked, id=132, stack(0x0c380000,0x0c3d0000)]
+  0x04c86c00 JavaThread "J3D-RenderStructureUpdateThread-1" [_thread_blocked, id=1736, stack(0x0c2e0000,0x0c330000)]
+  0x04c86800 JavaThread "J3D-BehaviorScheduler-1" [_thread_blocked, id=604, stack(0x0c210000,0x0c260000)]
+  0x04c86000 JavaThread "J3D-TransformStructureUpdateThread-1" [_thread_blocked, id=1556, stack(0x0bff0000,0x0c040000)]
+  0x04c85800 JavaThread "J3D-RenderingEnvironmentStructureUpdateThread-1" [_thread_blocked, id=3652, stack(0x0bed0000,0x0bf20000)]
+  0x04c85400 JavaThread "J3D-SoundStructureUpdateThread-1" [_thread_blocked, id=3056, stack(0x0be30000,0x0be80000)]
+  0x04c84c00 JavaThread "J3D-GeometryStructureUpdateThread-1" [_thread_blocked, id=2072, stack(0x0bd70000,0x0bdc0000)]
+  0x04bd6400 JavaThread "J3D-BehaviorStructureUpdateThread-1" [_thread_blocked, id=1680, stack(0x0bcb0000,0x0bd00000)]
+  0x04dacc00 JavaThread "D3D Screen Updater" daemon [_thread_blocked, id=1104, stack(0x0adc0000,0x0ae10000)]
+  0x04da7c00 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=4120, stack(0x0a260000,0x0a2b0000)]
+  0x04cd6800 JavaThread "J3D-Renderer-1" [_thread_in_native, id=4564, stack(0x0a1d0000,0x0a220000)]
+  0x04bb4000 JavaThread "J3D-MasterControl-1" [_thread_blocked, id=292, stack(0x0a0b0000,0x0a100000)]
+  0x04cd9000 JavaThread "J3D-NotificationThread" [_thread_blocked, id=5540, stack(0x0a020000,0x0a070000)]
+  0x04cd8800 JavaThread "J3D-TimerThread" [_thread_blocked, id=2196, stack(0x09f90000,0x09fe0000)]
+  0x04db5800 JavaThread "J3D-RenderingAttributesStructureUpdateThread" [_thread_blocked, id=5516, stack(0x09f00000,0x09f50000)]
+  0x04b86400 JavaThread "AWT-Windows" daemon [_thread_in_native, id=3404, stack(0x061c0000,0x06210000)]
+  0x04b86000 JavaThread "AWT-Shutdown" [_thread_blocked, id=4796, stack(0x06120000,0x06170000)]
+  0x04b83800 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=2908, stack(0x06090000,0x060e0000)]
+  0x00da9000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=3004, stack(0x049c0000,0x04a10000)]
+  0x00da4400 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=6016, stack(0x04930000,0x04980000)]
+  0x00da3400 JavaThread "Attach Listener" daemon [_thread_blocked, id=6020, stack(0x048a0000,0x048f0000)]
+  0x00da0400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6092, stack(0x04810000,0x04860000)]
+  0x00d94c00 JavaThread "Finalizer" daemon [_thread_blocked, id=5948, stack(0x04780000,0x047d0000)]
+  0x00d92c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=5428, stack(0x046f0000,0x04740000)]
+=>0x00e49800 JavaThread "main" [_thread_in_native, id=4692, stack(0x00200000,0x00250000)]
+
+Other Threads:
+  0x00d56800 VMThread [stack: 0x04660000,0x046b0000] [id=5684]
+  0x00dc1400 WatcherThread [stack: 0x04a50000,0x04aa0000] [id=2140]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4928K, used 3328K [0x24590000, 0x24ae0000, 0x29ae0000)
+  eden space 4416K,  67% used [0x24590000, 0x24878e60, 0x249e0000)
+  from space 512K,  68% used [0x249e0000, 0x24a37558, 0x24a60000)
+  to   space 512K,   0% used [0x24a60000, 0x24a60000, 0x24ae0000)
+ tenured generation   total 10944K, used 976K [0x29ae0000, 0x2a590000, 0x34590000)
+   the space 10944K,   8% used [0x29ae0000, 0x29bd43b0, 0x29bd4400, 0x2a590000)
+ compacting perm gen  total 12288K, used 3639K [0x34590000, 0x35190000, 0x38590000)
+   the space 12288K,  29% used [0x34590000, 0x3491de30, 0x3491e000, 0x35190000)
+    ro space 10240K,  54% used [0x38590000, 0x38b0e770, 0x38b0e800, 0x38f90000)
+    rw space 12288K,  55% used [0x38f90000, 0x39634ac8, 0x39634c00, 0x39b90000)
+
+Code Cache  [0x02570000, 0x02648000, 0x04570000)
+ total_blobs=512 nmethods=202 adapters=246 free_code_cache=32691968 largest_free_block=0
+
+Dynamic libraries:
+0x00400000 - 0x00424000 	C:\netbeans\jdk32\bin\java.exe
+0x774a0000 - 0x77620000 	C:\Windows\SysWOW64\ntdll.dll
+0x768b0000 - 0x769c0000 	C:\Windows\syswow64\kernel32.dll
+0x757a0000 - 0x757e6000 	C:\Windows\syswow64\KERNELBASE.dll
+0x756a0000 - 0x75740000 	C:\Windows\syswow64\ADVAPI32.dll
+0x754e0000 - 0x7558c000 	C:\Windows\syswow64\msvcrt.dll
+0x76bc0000 - 0x76bd9000 	C:\Windows\SysWOW64\sechost.dll
+0x76450000 - 0x76540000 	C:\Windows\syswow64\RPCRT4.dll
+0x74b90000 - 0x74bf0000 	C:\Windows\syswow64\SspiCli.dll
+0x74b80000 - 0x74b8c000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x7c340000 - 0x7c396000 	C:\netbeans\jdk32\jre\bin\msvcr71.dll
+0x6d8a0000 - 0x6db4f000 	C:\netbeans\jdk32\jre\bin\client\jvm.dll
+0x750b0000 - 0x751b0000 	C:\Windows\syswow64\USER32.dll
+0x74f90000 - 0x75020000 	C:\Windows\syswow64\GDI32.dll
+0x751b0000 - 0x751ba000 	C:\Windows\syswow64\LPK.dll
+0x74c30000 - 0x74ccd000 	C:\Windows\syswow64\USP10.dll
+0x74320000 - 0x74352000 	C:\Windows\system32\WINMM.dll
+0x76b10000 - 0x76b70000 	C:\Windows\system32\IMM32.DLL
+0x76a40000 - 0x76b0c000 	C:\Windows\syswow64\MSCTF.dll
+0x71190000 - 0x711dc000 	C:\Windows\system32\apphelp.dll
+0x6d850000 - 0x6d85c000 	C:\netbeans\jdk32\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	C:\netbeans\jdk32\jre\bin\java.dll
+0x768a0000 - 0x768a5000 	C:\Windows\syswow64\PSAPI.DLL
+0x6d890000 - 0x6d89f000 	C:\netbeans\jdk32\jre\bin\zip.dll
+0x10000000 - 0x1000e000 	C:\netbeans\jdk32\jre\bin\j3dcore-ogl-chk.dll
+0x731f0000 - 0x732b8000 	C:\Windows\system32\OPENGL32.dll
+0x73e30000 - 0x73e52000 	C:\Windows\system32\GLU32.dll
+0x725c0000 - 0x726a7000 	C:\Windows\system32\DDRAW.dll
+0x74000000 - 0x74006000 	C:\Windows\system32\DCIMAN32.dll
+0x751c0000 - 0x7535d000 	C:\Windows\syswow64\SETUPAPI.dll
+0x74c00000 - 0x74c27000 	C:\Windows\syswow64\CFGMGR32.dll
+0x76540000 - 0x765cf000 	C:\Windows\syswow64\OLEAUT32.dll
+0x74df0000 - 0x74f4c000 	C:\Windows\syswow64\ole32.dll
+0x76a20000 - 0x76a32000 	C:\Windows\syswow64\DEVOBJ.dll
+0x72120000 - 0x72133000 	C:\Windows\system32\dwmapi.dll
+0x72140000 - 0x721c0000 	C:\Windows\system32\uxtheme.dll
+0x74070000 - 0x74077000 	C:\Windows\system32\atiglpxx.dll
+0x69030000 - 0x69d28000 	C:\Windows\system32\atioglxx.dll
+0x72110000 - 0x72119000 	C:\Windows\system32\VERSION.dll
+0x74f50000 - 0x74f85000 	C:\Windows\syswow64\WS2_32.dll
+0x74bf0000 - 0x74bf6000 	C:\Windows\syswow64\NSI.dll
+0x73e80000 - 0x73e87000 	C:\Windows\system32\atigktxx.dll
+0x05210000 - 0x05248000 	C:\Windows\system32\atiadlxy.dll
+0x754b0000 - 0x754dd000 	C:\Windows\syswow64\WINTRUST.dll
+0x75390000 - 0x754ad000 	C:\Windows\syswow64\CRYPT32.dll
+0x757f0000 - 0x757fc000 	C:\Windows\syswow64\MSASN1.dll
+0x6d0b0000 - 0x6d1fb000 	C:\netbeans\jdk32\jre\bin\awt.dll
+0x74360000 - 0x743b1000 	C:\Windows\system32\WINSPOOL.DRV
+0x72400000 - 0x7259e000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x75740000 - 0x75797000 	C:\Windows\syswow64\SHLWAPI.dll
+0x6d400000 - 0x6d406000 	C:\netbeans\jdk32\jre\bin\jawt.dll
+0x051a0000 - 0x051c9000 	C:\netbeans\jdk32\jre\bin\j3dcore-ogl.dll
+0x00570000 - 0x00580000 	C:\lib\ext\ubitrack_java.dll
+0x06210000 - 0x0656f000 	C:\lib\ext\ubitrack.dll
+0x06570000 - 0x06597000 	C:\lib\ext\log4cpp.dll
+0x73050000 - 0x73057000 	C:\Windows\system32\WSOCK32.dll
+0x72370000 - 0x723fe000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCP90.dll
+0x6bac0000 - 0x6bb63000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCR90.dll
+0x6d2e0000 - 0x6d32f000 	C:\netbeans\jdk32\jre\bin\fontmanager.dll
+0x70480000 - 0x70643000 	C:\Windows\system32\d3d9.dll
+0x73ff0000 - 0x73ff6000 	C:\Windows\system32\d3d8thk.dll
+0x73e70000 - 0x73e78000 	C:\Windows\system32\atiu9pag.dll
+0x67b80000 - 0x67ef6000 	C:\Windows\system32\atiumdag.dll
+0x67fa0000 - 0x6827f000 	C:\Windows\system32\atiumdva.dll
+0x75800000 - 0x7644a000 	C:\Windows\syswow64\shell32.dll
+0x0acb0000 - 0x0ad71000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\2D3DPoseEstimation.dll
+0x0a2c0000 - 0x0a2dd000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\AbsoluteOrientation.dll
+0x0a2f0000 - 0x0a30c000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\AbsoluteOrientationRANSAC.dll
+0x0a320000 - 0x0a338000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Accumulator.dll
+0x0ae20000 - 0x0ae33000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Aggregator.dll
+0x0ae50000 - 0x0ae63000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ApplicationEndpointsVision.dll
+0x0ae80000 - 0x0afb6000 	C:\lib\ext\utvision.dll
+0x6dd90000 - 0x6e018000 	C:\lib\ext\cv210.dll
+0x67960000 - 0x67b7e000 	C:\lib\ext\cxcore210.dll
+0x0aff0000 - 0x0b000000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ApplicationPullSink.dll
+0x0b270000 - 0x0b286000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ApplicationPushSink.dll
+0x0b2a0000 - 0x0b2c1000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ApplicationPushSource.dll
+0x0b2d0000 - 0x0b2ff000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\art.dll
+0x06e50000 - 0x06e5c000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\artBodyFileReader.dll
+0x0b310000 - 0x0b3d2000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\artErrorEstimator.dll
+0x0b3f0000 - 0x0b418000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\artSender.dll
+0x0b430000 - 0x0b45f000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Average.dll
+0x0b470000 - 0x0b487000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\AVIFrameGrabber.dll
+0x722a0000 - 0x7236a000 	C:\lib\ext\highgui210.dll
+0x73e10000 - 0x73e29000 	C:\Windows\system32\AVIFIL32.dll
+0x711e0000 - 0x711f4000 	C:\Windows\system32\MSACM32.dll
+0x73980000 - 0x739a1000 	C:\Windows\system32\MSVFW32.dll
+0x739c0000 - 0x739d3000 	C:\Windows\system32\AVICAP32.dll
+0x73430000 - 0x73449000 	C:\Windows\system32\OLEPRO32.DLL
+0x0b4d0000 - 0x0b4e9000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Buffer.dll
+0x0b500000 - 0x0b58f000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\CalibFile.dll
+0x0b5a0000 - 0x0b5b4000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\CalibServer.dll
+0x0b5d0000 - 0x0b5ef000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\CastComponent.dll
+0x0b600000 - 0x0b614000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ChessBoardDetection.dll
+0x0b630000 - 0x0b730000 	C:\lib\ext\cxcore100.dll
+0x0b730000 - 0x0b765000 	C:\lib\ext\libguide40.dll
+0x0b770000 - 0x0b844000 	C:\lib\ext\cv100.dll
+0x0b960000 - 0x0b979000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ChessboardFunctions.dll
+0x0ba20000 - 0x0ba37000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ChessBoardTracking.dll
+0x0ba50000 - 0x0ba6d000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Collector.dll
+0x0ba80000 - 0x0ba90000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Color2Grayscale.dll
+0x0baa0000 - 0x0baaf000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Countdown.dll
+0x0bac0000 - 0x0badc000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\CovarianceEstimation.dll
+0x0baf0000 - 0x0bb06000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Delay.dll
+0x0bb20000 - 0x0bb37000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Direction.dll
+0x0bb50000 - 0x0bb63000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\DirectShowFrameGrabber.dll
+0x0bb80000 - 0x0bb97000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Distance.dll
+0x0bbb0000 - 0x0bbd3000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ExponentialSmoothing.dll
+0x0bbf0000 - 0x0bc05000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\FindSubPixelCorner.dll
+0x0bc20000 - 0x0bc2d000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\FrameBuffer.dll
+0x0bc40000 - 0x0bc56000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\FunctionalFusion.dll
+0x0bd00000 - 0x0bd2c000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Gate.dll
+0x0bdd0000 - 0x0bde8000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\gps.dll
+0x0bf20000 - 0x0bf3b000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\HandEyeCalibration.dll
+0x0bf50000 - 0x0bf66000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\HighguiFrameGrabber.dll
+0x0bf80000 - 0x0bfa3000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\HighguiWindow.dll
+0x0c050000 - 0x0c06a000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Identity.dll
+0x0c180000 - 0x0c197000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImageFileFrameGrabber.dll
+0x0c1b0000 - 0x0c1bd000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImageFileRecorder.dll
+0x0c260000 - 0x0c271000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImageGate.dll
+0x0c290000 - 0x0c29d000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImageIO.dll
+0x0c3d0000 - 0x0c43e000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImagePointPlaneIntersection.dll
+0x0c450000 - 0x0c460000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\ImageShrink.dll
+0x0c470000 - 0x0c48e000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Intrinsic.dll
+0x0c530000 - 0x0c555000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\Inversion.dll
+0x0c570000 - 0x0c58d000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\kuka.dll
+0x0c5a0000 - 0x0c5b7000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\LightPointDetection.dll
+0x0c5d0000 - 0x0c5e5000 	C:\Users\gokhan\Documents\NetBeansProjects\TowerOfHanoi\libs\ubitrack\bin\ubitrack\LinearInterpolation.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=x-MacTurkish 
+java_command: towerofhanoi.Main
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Nokia\PC Connectivity Solution\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;c:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Program Files (x86)\Windows Live\Shared;C:\lib\ext
+USERNAME=gokhan
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 30 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 Service Pack 1
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 30 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 4117020k(1853504k free), swap 8232192k(5570292k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.0-b11) for windows-x86 JRE (1.6.0_25-b06), built on Apr 14 2011 01:04:32 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Wed Jul 06 21:08:48 2011
+elapsed time: 1 seconds
+
