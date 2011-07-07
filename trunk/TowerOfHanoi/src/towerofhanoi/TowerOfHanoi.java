@@ -113,8 +113,8 @@ public class TowerOfHanoi
         switchArrow.selectArrow(false);
         
         
-//         rob1.push(LARGE_DISC);
-//         rob1.push(MEDIUM_DISC);
+         rob1.push(LARGE_DISC);
+         rob1.push(MEDIUM_DISC);
          rob1.push(SMALL_DISC);
          
          
