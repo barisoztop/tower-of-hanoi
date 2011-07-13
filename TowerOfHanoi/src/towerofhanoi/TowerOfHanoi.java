@@ -4,6 +4,7 @@
  */
 package towerofhanoi;
 
+import models.Animation3DText;
 import models.BlueAppearance;
 import models.BlueArrow;
 import models.Disc;
@@ -13,6 +14,7 @@ import models.RedAppearance;
 import models.RedArrow;
 import models.Rob;
 import models.SwitchArrow;
+import models.Text3DApp;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
 import utils.DistanceObserver;
@@ -125,9 +127,11 @@ public class TowerOfHanoi
         
         cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
         observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
-        
-        
         observer.start();
+        Text3DApp text3DApp = new Text3DApp("Game Over");
+        Animation3DText temp_animationRotation = new Animation3DText(text3DApp);
+        viewer.addObject(temp_animationRotation);
+       
     }
 
     public PoseReceiver getRodPoseReceiver1() 
