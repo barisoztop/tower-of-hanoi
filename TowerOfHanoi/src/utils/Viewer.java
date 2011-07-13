@@ -29,7 +29,7 @@ public class Viewer {
 	
 	public Viewer(String frameTitle) {
 		frame = new JFrame("3D UI - " + frameTitle);
-		
+
 		// Get display information like color depth, etc...
 		GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
 		

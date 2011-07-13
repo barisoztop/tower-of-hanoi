@@ -4,6 +4,10 @@
  */
 package towerofhanoi;
 
+import javax.media.j3d.BranchGroup;
+import javax.media.j3d.Transform3D;
+import javax.media.j3d.TransformGroup;
+import javax.vecmath.Vector3f;
 import models.Animation3DText;
 import models.BlueAppearance;
 import models.BlueArrow;
@@ -18,6 +22,7 @@ import models.Text3DApp;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
 import utils.DistanceObserver;
+import utils.FinalStateChecker;
 import utils.ImageReceiver;
 import utils.PoseReceiver;
 import utils.UbitrackFacade;
@@ -50,7 +55,7 @@ public class TowerOfHanoi
     private Rob rob1;
     private Rob rob2;
     private Rob rob3;
-    
+    private FinalStateChecker checker;
     public TowerOfHanoi() 
     {
         LARGE_DISC =new Disc(LARGE_DISK_RADIUS,DISK_HEIGHT,0, new GreenAppereance());
@@ -128,9 +133,9 @@ public class TowerOfHanoi
         cursorPoseReceiver.setTransformGroup(switchArrow.getTransformGroup());
         observer = new DistanceObserver(rob1, rob2, rob3, switchArrow);
         observer.start();
-        Text3DApp text3DApp = new Text3DApp("Game Over");
-        Animation3DText temp_animationRotation = new Animation3DText(text3DApp);
-        viewer.addObject(temp_animationRotation);
+        checker = new FinalStateChecker(rob1, rob3, viewer,observer);
+        checker.start();
+        
        
     }
 

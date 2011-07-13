@@ -4,7 +4,13 @@
  */
 package utils;
 
+import javax.media.j3d.BranchGroup;
+import javax.media.j3d.Transform3D;
+import javax.media.j3d.TransformGroup;
+import javax.vecmath.Vector3f;
+import models.Disc;
 import models.Rob;
+import models.Text3DApp;
 
 /**
  *
@@ -12,11 +18,32 @@ import models.Rob;
  */
 public class FinalStateChecker extends Thread
 {
-
-    private Rob rob;
-    public FinalStateChecker(Rob rob) 
+    private Viewer viewer;
+    private Rob rob1;
+    private Rob rob3;
+    private BranchGroup bgroup;
+    private DistanceObserver dist;
+    public FinalStateChecker(Rob start,Rob end,Viewer view,DistanceObserver dist) 
     {
-        this.rob=rob;
+        this.dist=dist;
+        bgroup = new BranchGroup();
+        this.rob1=start;
+        this.rob3=end;
+        this.viewer=view;
+        Transform3D trans = new Transform3D();
+        trans.setTranslation(new Vector3f(0.0f, 0.0f, -0.4f));
+        Text3DApp text3DApp = new Text3DApp("Game Over");
+        TransformGroup tgroup = new TransformGroup(trans);
+        tgroup.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
+        tgroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
+        tgroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+        tgroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+        bgroup.setCapability(BranchGroup.ALLOW_DETACH);
+        bgroup.setCapability(BranchGroup.ALLOW_CHILDREN_READ);
+        bgroup.setCapability(BranchGroup.ALLOW_CHILDREN_WRITE);
+
+        tgroup.addChild(text3DApp);
+        bgroup.addChild(tgroup);
     }
 
     @Override
@@ -24,16 +51,28 @@ public class FinalStateChecker extends Thread
     {
         while(true)
         {
-            if(rob.size()==3)
+            if(rob3.size()==3)
             {
                 try
                 {
-                    //add animation
+                   
+                    dis
+
+                    viewer.addObject(bgroup);
                     Thread.sleep(5000);
-                    //reset the game and start
+                    viewer.removeObject(bgroup);
+                    //Reset the game
+                    Disc small = rob3.pop();
+                    Disc medium = rob3.pop();
+                    Disc big = rob3.pop();
+                    
+                    rob1.push(big);
+                    rob1.push(medium);
+                    rob1.push(small);
                 }
                 catch (Exception e)
                 {
+//                    viewer.removeObject(bgroup);
                     System.out.println(e);
                 }
                 
