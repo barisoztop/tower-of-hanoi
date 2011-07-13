@@ -27,6 +27,7 @@ public class Text3DApp extends BranchGroup{
         Material m = new Material(objColor, eColor, objColor, sColor , 1.0f);
         Appearance a = new Appearance();
         m.setLightingEnable(true);
+        
         a.setMaterial(m);
         Font3D font3d = new Font3D(new Font("Helvetica", Font.LAYOUT_LEFT_TO_RIGHT, 1),new FontExtrusion());
         Text3D textGeom = new Text3D(font3d, new String(text),new Point3f(-2.0f, 0.0f, 0.0f));
