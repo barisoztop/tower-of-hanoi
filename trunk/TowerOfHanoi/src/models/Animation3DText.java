@@ -21,7 +21,7 @@ public class Animation3DText extends BranchGroup{
 		Alpha a = new Alpha(-1, 3000); //-1=infinity and a rotation takes 3000ms
 
 		Transform3D rotationTransform = new Transform3D();
-		Vector3f vectorRotate = new Vector3f(1, 0 ,0);
+		Vector3f vectorRotate = new Vector3f(1.0f, 0.0f ,1.0f);
 		rotationTransform.rotX(360);
 		rotationTransform.setTranslation(vectorRotate);
 		

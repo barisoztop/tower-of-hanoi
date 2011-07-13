@@ -37,7 +37,7 @@ public class Text3DApp extends BranchGroup{
         transScale.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
         Transform3D t3d = new Transform3D();
         t3d.setIdentity();
-        t3d.setScale(0.1d);
+        t3d.setScale(0.03d);
         textShape = new Shape3D(textGeom,a);
         TransformGroup transGroup = new TransformGroup(); 
         transGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
