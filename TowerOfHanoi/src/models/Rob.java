@@ -94,7 +94,7 @@ public class Rob extends BranchGroup
     }
     
     
-    public void push (Disc disc)
+    synchronized public void push (Disc disc)
     {
         stack.push(disc);
         disc.updatePosition(stack.size());
@@ -102,7 +102,7 @@ public class Rob extends BranchGroup
     }
     
     
-    public Disc pop()
+    synchronized public Disc pop()
     {
         if(!stack.empty())
         {

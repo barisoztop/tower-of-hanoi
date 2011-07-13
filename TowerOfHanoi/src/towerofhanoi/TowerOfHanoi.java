@@ -120,9 +120,9 @@ public class TowerOfHanoi
         switchArrow.selectArrow(false);
         
         
-         rob1.push(LARGE_DISC);
-         rob1.push(MEDIUM_DISC);
-         rob1.push(SMALL_DISC);
+         rob3.push(LARGE_DISC);
+         rob3.push(MEDIUM_DISC);
+         rob3.push(SMALL_DISC);
          
          
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
