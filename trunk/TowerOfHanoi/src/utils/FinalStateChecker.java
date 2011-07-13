@@ -55,14 +55,13 @@ public class FinalStateChecker extends Thread
             {
                 try
                 {
-                   
                     
-
                     viewer.addObject(bgroup);
-                    dist.suspend();
-                    Thread.sleep(5000);
-                    viewer.removeObject(bgroup);
-                    //Reset the game
+                    synchronized (dist)
+                    {
+                       
+                    }
+                    
                     Disc small = rob3.pop();
                     Disc medium = rob3.pop();
                     Disc big = rob3.pop();
@@ -70,12 +69,22 @@ public class FinalStateChecker extends Thread
                     rob1.push(big);
                     rob1.push(medium);
                     rob1.push(small);
-                    dist.resume();
+                    synchronized (dist)
+                    {
+                        dist.resume();   
+                    }
+                    
+                    Thread.sleep(5000);
+                    viewer.removeObject(bgroup);
+                    
+                    //Reset the game
+                    
                 }
                 catch (Exception e)
                 {
 //                    viewer.removeObject(bgroup);
                     System.out.println(e);
+                     dist.resume();
                 }
                 
             }
