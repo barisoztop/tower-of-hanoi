@@ -56,9 +56,10 @@ public class FinalStateChecker extends Thread
                 try
                 {
                    
-                    dis
+                    
 
                     viewer.addObject(bgroup);
+                    dist.suspend();
                     Thread.sleep(5000);
                     viewer.removeObject(bgroup);
                     //Reset the game
@@ -69,6 +70,7 @@ public class FinalStateChecker extends Thread
                     rob1.push(big);
                     rob1.push(medium);
                     rob1.push(small);
+                    dist.resume();
                 }
                 catch (Exception e)
                 {

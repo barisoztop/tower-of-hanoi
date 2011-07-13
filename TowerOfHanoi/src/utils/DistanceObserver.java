@@ -105,7 +105,7 @@ public class DistanceObserver extends Thread
                             cursor.selectArrow(true);
                             cursor.getTransformGroup().addChild(tempBranchgroup);
                             HASDISK=true;
-                            Thread.sleep(2000);                            
+                            Thread.sleep(2500);                            
                         }   
                         else
                         {
@@ -119,7 +119,7 @@ public class DistanceObserver extends Thread
 
                                 cursor.selectArrow(false);
                                 rob1.push(tempDisc);
-                                Thread.sleep(2000);
+                                Thread.sleep(2500);
                             }
                             
                             
@@ -143,7 +143,7 @@ public class DistanceObserver extends Thread
                             cursor.selectArrow(true);
                             cursor.getTransformGroup().addChild(tempBranchgroup);
                             HASDISK=true;   
-                            Thread.sleep(2000);
+                            Thread.sleep(2500);
                             
                         }
                         else
@@ -160,7 +160,7 @@ public class DistanceObserver extends Thread
 
                                 cursor.selectArrow(false);
                                 rob2.push(tempDisc);
-                                Thread.sleep(2000);
+                                Thread.sleep(2500);
                             }
                         }
                     }
@@ -183,7 +183,7 @@ public class DistanceObserver extends Thread
                             cursor.selectArrow(true);
                             cursor.getTransformGroup().addChild(tempBranchgroup);
                             HASDISK=true;    
-                            Thread.sleep(2000);
+                            Thread.sleep(2500);
                         }
                         else
                         {
@@ -197,7 +197,7 @@ public class DistanceObserver extends Thread
 
                                 cursor.selectArrow(false);
                                 rob3.push(tempDisc);
-                                Thread.sleep(2000);
+                                Thread.sleep(2500);
                             }
                         }
                     }
