@@ -4,11 +4,6 @@
  */
 package towerofhanoi;
 
-import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
-import javax.vecmath.Vector3f;
-import models.Animation3DText;
 import models.BlueAppearance;
 import models.BlueArrow;
 import models.Disc;
@@ -18,7 +13,6 @@ import models.RedAppearance;
 import models.RedArrow;
 import models.Rob;
 import models.SwitchArrow;
-import models.Text3DApp;
 import utils.AdvancedViewer;
 import utils.BackgroundObject;
 import utils.DistanceObserver;
@@ -120,9 +114,9 @@ public class TowerOfHanoi
         switchArrow.selectArrow(false);
         
         
-         rob3.push(LARGE_DISC);
-         rob3.push(MEDIUM_DISC);
-         rob3.push(SMALL_DISC);
+         rob1.push(LARGE_DISC);
+         rob1.push(MEDIUM_DISC);
+         rob1.push(SMALL_DISC);
          
          
         rodPoseReceiver1.setTransformGroup(rob1.getTransformGroup());
