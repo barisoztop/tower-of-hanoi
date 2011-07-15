@@ -7,6 +7,7 @@ package models;
 import com.sun.j3d.utils.geometry.Cylinder;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
+import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Vector3f;
@@ -50,6 +51,9 @@ public class Disc extends BranchGroup
         trans.setTranslation(new Vector3f(0.0f,0.0f,(height/2.0f)+(height*order)));
         
         BranchGroup bg = new BranchGroup();
+        bg.setCapability(ALLOW_DETACH);
+        bg.setCapability(ALLOW_CHILDREN_EXTEND);
+        bg.setCapability(ALLOW_CHILDREN_WRITE);
         group = new TransformGroup(trans);
         
         group.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
@@ -58,6 +62,10 @@ public class Disc extends BranchGroup
         group.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
         
         cylinder = new Cylinder(radius,height,app);
+        cylinder.getShape(Cylinder.BODY).setCapability(Shape3D.ALLOW_APPEARANCE_WRITE);
+        cylinder.getShape(Cylinder.BOTTOM).setCapability(Shape3D.ALLOW_APPEARANCE_WRITE);
+        cylinder.getShape(Cylinder.TOP).setCapability(Shape3D.ALLOW_APPEARANCE_WRITE);
+        
         group.addChild(cylinder);
         bg.addChild(group);
         
@@ -65,14 +73,22 @@ public class Disc extends BranchGroup
         
         
         
-        
         setCapability(ALLOW_DETACH);
         setCapability(ALLOW_CHILDREN_EXTEND);
         setCapability(ALLOW_CHILDREN_WRITE);
         addChild(GlobaltransGroup);
+        
     }
     
+    public void setAppearance(Appearance app)
+    {
+        cylinder.setAppearance(app);
+    }
     
+    public Appearance getAppearance()
+    {
+        return cylinder.getAppearance();
+    }
     public void updatePosition(int order)
     {
         trans.setTranslation(new Vector3f(0.0f,0.0f,(height/2.0f)+(height*order)));

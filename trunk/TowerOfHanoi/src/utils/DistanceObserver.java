@@ -6,12 +6,14 @@
  */
 package utils;
 
+import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Vector3d;
 
 import models.Disc;
+import models.GreyAppearance;
 import models.Rob;
 import models.SwitchArrow;
 
@@ -28,7 +30,7 @@ public class DistanceObserver extends Thread
     private Rob rob2;
     private Rob rob3;
     private SwitchArrow cursor;
-    private static final double THRESHOLD = 0.04d;
+    private static final double THRESHOLD = 0.05d;
     private boolean HASDISK = false;
   
     
@@ -121,6 +123,13 @@ public class DistanceObserver extends Thread
                                 rob1.push(tempDisc);
                                 Thread.sleep(2500);
                             }
+                            else
+                            {
+                                Appearance app = tempDisc.getAppearance();
+                                tempDisc.setAppearance(new GreyAppearance());
+                                Thread.sleep(1000);
+                                tempDisc.setAppearance(app);
+                            }
                             
                             
                         } 
@@ -162,6 +171,13 @@ public class DistanceObserver extends Thread
                                 rob2.push(tempDisc);
                                 Thread.sleep(2500);
                             }
+                            else
+                            {
+                                Appearance app = tempDisc.getAppearance();
+                                tempDisc.setAppearance(new GreyAppearance());
+                                Thread.sleep(1000);
+                                tempDisc.setAppearance(app);
+                            }
                         }
                     }
                     else if((vecDirThird.length() < THRESHOLD)&& vecDirThird.length() != 0)
@@ -199,6 +215,13 @@ public class DistanceObserver extends Thread
                                 rob3.push(tempDisc);
                                 Thread.sleep(2500);
                             }
+                            else
+                            {
+                                Appearance app = tempDisc.getAppearance();
+                                tempDisc.setAppearance(new GreyAppearance());
+                                Thread.sleep(1000);
+                                tempDisc.setAppearance(app);
+                            }
                         }
                     }
                        
@@ -208,7 +231,7 @@ public class DistanceObserver extends Thread
         catch (Exception e)
         {
             System.out.println(e);
-            System.exit(0);
+//            System.exit(0);
         }
     }
     
