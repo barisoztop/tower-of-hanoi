@@ -10,6 +10,7 @@ import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.Vector3d;
 
 import models.Disc;
@@ -32,7 +33,7 @@ public class DistanceObserver extends Thread
     private SwitchArrow cursor;
     private static final double THRESHOLD = 0.05d;
     private boolean HASDISK = false;
-  
+    private TransparencyAttributes transparent;
     
     public DistanceObserver(Rob rob1, Rob rob2, Rob rob3, SwitchArrow cursor) 
     {
@@ -40,6 +41,9 @@ public class DistanceObserver extends Thread
         this.rob2 = rob2;
         this.rob3 = rob3;
         this.cursor = cursor;
+        transparent = new TransparencyAttributes();
+        transparent.setTransparencyMode (TransparencyAttributes.BLENDED);
+        transparent.setTransparency (0.5f);
     }
 
     
@@ -98,7 +102,9 @@ public class DistanceObserver extends Thread
                             tempDisc  = rob1.pop();
                             if(tempDisc == null)
                                 continue;
-                            
+                            // Make transparent
+                            tempDisc.getAppearance().setTransparencyAttributes (transparent);
+ 
                             relativeTrans.invert(cursorTrans);
                             relativeTrans.mul(relativeTrans,rob1Trans);
                             tempTransgroup.setTransform(relativeTrans);
@@ -118,7 +124,8 @@ public class DistanceObserver extends Thread
                                 cursor.getTransformGroup().removeChild(tempBranchgroup);
                                 tempBranchgroup.removeAllChildren();
                                 tempTransgroup.removeAllChildren();
-
+                                // Make opaque
+                                tempDisc.getAppearance().setTransparencyAttributes (null);
                                 cursor.selectArrow(false);
                                 rob1.push(tempDisc);
                                 Thread.sleep(2500);
@@ -126,7 +133,11 @@ public class DistanceObserver extends Thread
                             else
                             {
                                 Appearance app = tempDisc.getAppearance();
-                                tempDisc.setAppearance(new GreyAppearance());
+                                GreyAppearance grey= new GreyAppearance();
+                                grey.setCapability(Appearance.ALLOW_TRANSPARENCY_ATTRIBUTES_WRITE);
+                                tempDisc.setAppearance(grey);
+                                tempDisc.getAppearance().setTransparencyAttributes (transparent);
+
                                 Thread.sleep(1000);
                                 tempDisc.setAppearance(app);
                             }
@@ -141,6 +152,9 @@ public class DistanceObserver extends Thread
                             tempDisc  = rob2.pop();
                             if(tempDisc == null)
                                 continue;
+                            // Make transparent
+                            tempDisc.getAppearance().setTransparencyAttributes (transparent);
+                            
                             
                             relativeTrans.invert(cursorTrans);
                             relativeTrans.mul(relativeTrans,rob2Trans);
@@ -166,7 +180,8 @@ public class DistanceObserver extends Thread
                                 cursor.getTransformGroup().removeChild(tempBranchgroup);
                                 tempBranchgroup.removeAllChildren();
                                 tempTransgroup.removeAllChildren();
-
+                                // Make opaque
+                                tempDisc.getAppearance().setTransparencyAttributes (null);
                                 cursor.selectArrow(false);
                                 rob2.push(tempDisc);
                                 Thread.sleep(2500);
@@ -174,7 +189,12 @@ public class DistanceObserver extends Thread
                             else
                             {
                                 Appearance app = tempDisc.getAppearance();
-                                tempDisc.setAppearance(new GreyAppearance());
+                                
+                                GreyAppearance grey= new GreyAppearance();
+                                grey.setCapability(Appearance.ALLOW_TRANSPARENCY_ATTRIBUTES_WRITE);
+                                tempDisc.setAppearance(grey);
+                                // Make opaque
+                                tempDisc.getAppearance().setTransparencyAttributes (transparent);
                                 Thread.sleep(1000);
                                 tempDisc.setAppearance(app);
                             }
@@ -187,7 +207,8 @@ public class DistanceObserver extends Thread
                             tempDisc  = rob3.pop();
                             if(tempDisc == null)
                                 continue;
-                            
+                            // Make transparent
+                            tempDisc.getAppearance().setTransparencyAttributes (transparent);
                             relativeTrans.invert(cursorTrans);
                             relativeTrans.mul(relativeTrans,rob3Trans);
                             tempTransgroup.setTransform(relativeTrans);
@@ -210,7 +231,8 @@ public class DistanceObserver extends Thread
                                 cursor.getTransformGroup().removeChild(tempBranchgroup);
                                 tempBranchgroup.removeAllChildren();
                                 tempTransgroup.removeAllChildren();
-
+                                // Make opaque
+                                tempDisc.getAppearance().setTransparencyAttributes (null);
                                 cursor.selectArrow(false);
                                 rob3.push(tempDisc);
                                 Thread.sleep(2500);
@@ -218,7 +240,12 @@ public class DistanceObserver extends Thread
                             else
                             {
                                 Appearance app = tempDisc.getAppearance();
-                                tempDisc.setAppearance(new GreyAppearance());
+                                
+                                GreyAppearance grey= new GreyAppearance();
+                                grey.setCapability(Appearance.ALLOW_TRANSPARENCY_ATTRIBUTES_WRITE);
+                                tempDisc.setAppearance(grey);
+                                // Make opaque
+                                tempDisc.getAppearance().setTransparencyAttributes (transparent);
                                 Thread.sleep(1000);
                                 tempDisc.setAppearance(app);
                             }
